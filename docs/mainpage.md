@@ -1,8 +1,15 @@
 # Plotly.cpp API Documentation
 
+![Build Status](https://img.shields.io/github/actions/workflow/status/yhisaki/plotly.cpp/ci.yml?branch=main)
+[![codecov](https://codecov.io/gh/yhisaki/plotly.cpp/graph/badge.svg?token=NsLJgwCpau)](https://codecov.io/gh/yhisaki/plotly.cpp)
+![Version](https://img.shields.io/github/v/tag/yhisaki/plotly.cpp?label=version)
+![License](https://img.shields.io/github/license/yhisaki/plotly.cpp)
+![C++ Standard](https://img.shields.io/badge/C%2B%2B-17%2B-blue.svg)
+![Platform](https://img.shields.io/badge/platform-Linux-lightgrey)
+
 ## Overview
 
-**Plotly.cpp** brings the power of [Plotly.js](https://plotly.com/javascript/) to C++. This library provides a modern C++17 interface for creating interactive data visualizations with real-time updates, event handling, and export capabilities.
+**Plotly.cpp** brings the power of [Plotly.js](https://plotly.com/javascript/) to C++. This library provides a modern C++ interface for creating interactive data visualizations with real-time updates, event handling, and export capabilities.
 
 ![Plotly.cpp Demo](/docs/images/gallery.png)
 
@@ -24,6 +31,55 @@
 
 ![Bidirectional Events](/docs/images/event_handling.gif)
 
+## Installation & Quick Start
+
+### Prerequisites
+
+- **Ubuntu Linux** (tested platform)
+- **Chrome/Chromium** browser
+- **C++17 or higher**
+
+### Installation
+
+#### Install from deb package (Recommended)
+
+```bash
+wget https://github.com/yhisaki/plotly.cpp/releases/download/v0.1.0/libplotly-cpp-0.1.0-Linux.deb
+sudo apt install ./libplotly-cpp-0.1.0-Linux.deb
+```
+
+#### Install from FetchContent
+
+Add to your CMake project using FetchContent:
+
+```cmake
+include(FetchContent)
+
+FetchContent_Declare(
+    plotly-cpp
+    GIT_REPOSITORY https://github.com/yhisaki/plotly.cpp.git
+    GIT_TAG v0.1.0
+)
+
+FetchContent_MakeAvailable(plotly-cpp)
+```
+
+#### Usage
+
+After installation, add the following to your `CMakeLists.txt`:
+
+```cmake
+find_package(plotly-cpp REQUIRED)
+
+target_link_libraries(your_target plotly-cpp::plotly-cpp)
+```
+
+#### Dependencies
+
+Plotly.cpp requires the following dependencies:
+
+- [**nlohmann/json**](https://github.com/nlohmann/json) - JSON serialization/deserialization. You can install it by `sudo apt install nlohmann-json3-dev`.
+
 ## Architecture
 
 The library uses a **client-server architecture**:
@@ -37,7 +93,9 @@ The library uses a **client-server architecture**:
    - Plotly.js runtime for visualization
    - Event bridge for user interactions
 
-## Quick Start
+You can find more details in [Architecture Overview](architecture.md).
+
+## Simple Example
 
 ```cpp
 #include "plotly/plotly.hpp"
@@ -80,18 +138,6 @@ int main() {
 | @ref plotly::Figure::update() | [`Plotly.update()`](https://plotly.com/javascript/plotlyjs-function-reference/#plotlyupdate) | Update data & layout |
 | @ref plotly::Figure::extendTraces() | [`Plotly.extendTraces()`](https://plotly.com/javascript/plotlyjs-function-reference/#plotlyextendtraces) | Stream real-time data |
 | @ref plotly::Figure::on() | [Event listeners](https://plotly.com/javascript/plotlyjs-events/) | Handle user interactions |
-
-## Getting Started
-
-1. **Installation** - See [Installation & Quick Start](https://github.com/yhisaki/plotly.cpp#-installation--quick-start) for installation instructions
-2. **API Reference** - Browse the class documentation starting with @ref plotly::Figure or see [Complete API Reference](https://github.com/yhisaki/plotly.cpp#-complete-api-reference)
-3. **Examples** - Check the `gallery/` directory for comprehensive examples
-
-## Dependencies
-
-- **C++17 or higher**
-- **nlohmann/json** - JSON serialization (auto-fetched if not found)
-- **Chrome/Chromium browser** - For visualization frontend
 
 ---
 

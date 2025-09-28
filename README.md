@@ -1,8 +1,10 @@
 <div align="center">
   <h1>🚀 Plotly.cpp</h1>
-  <p><strong>Interactive Data Visualization for Modern C++</strong></p>
+  <p><strong>A C++ plotting library for expressive, interactive, and streaming data visualization</strong></p>
 
 ![Build Status](https://img.shields.io/github/actions/workflow/status/yhisaki/plotly.cpp/ci.yml?branch=main)
+[![Documentation](https://img.shields.io/badge/docs-Doxygen-blue.svg)](https://yhisaki.github.io/plotly.cpp/)
+[![codecov](https://codecov.io/gh/yhisaki/plotly.cpp/graph/badge.svg?token=NsLJgwCpau)](https://codecov.io/gh/yhisaki/plotly.cpp)
 ![Version](https://img.shields.io/github/v/tag/yhisaki/plotly.cpp?label=version)
 ![License](https://img.shields.io/github/license/yhisaki/plotly.cpp)
 ![C++ Standard](https://img.shields.io/badge/C%2B%2B-17%2B-blue.svg)
@@ -17,6 +19,7 @@
 
 > [!WARNING]
 > **This library is currently under active development**
+>
 > We welcome feedback, bug reports, and contributions to help stabilize the library!
 
 ## 📋 Table of Contents
@@ -134,6 +137,8 @@ Plotly.cpp requires the following dependencies:
 - [**nlohmann/json**](https://github.com/nlohmann/json) - JSON serialization/deserialization. You can install it by `sudo apt install nlohmann-json3-dev`.
 
 ## 📊 Simple Examples
+
+You can find more details in [documentation](https://yhisaki.github.io/plotly.cpp/examples.html).
 
 ### Hello World Example
 
@@ -426,6 +431,8 @@ More complex examples and use cases are available in the [gallery](gallery).
 [![gallery](/docs/images/gallery.png)](gallery)
 
 ## 🏗️ Architecture Overview
+
+You can find more details in [Architecture Overview](https://yhisaki.github.io/plotly.cpp/architecture.html).
 
 ### Key Components
 
