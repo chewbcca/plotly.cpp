@@ -95,7 +95,7 @@ The library uses a **client-server architecture**:
 
 You can find more details in [Architecture Overview](architecture.md).
 
-## Quick Start
+## Simple Example
 
 ```cpp
 #include "plotly/plotly.hpp"
