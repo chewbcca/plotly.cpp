@@ -21,9 +21,9 @@
  *
  * Mathematical concepts:
  * - Star geometry with alternating outer and inner radii
- * - Angular positioning using multiples of π/5 (36-degree increments)
- * - Polar-to-Cartesian coordinate transformation: \f$x = r·cos(θ)\f$, \f$y =
- * r·sin(θ)\f$
+ * - Angular positioning using multiples of \f$\pi/5\f$ (36-degree increments)
+ * - Polar-to-Cartesian coordinate transformation: \f$x = r·cos(\theta)\f$, \f$y
+ * = r·sin(\theta)\f$
  * - Path completion by connecting back to the starting point
  *
  * The star shape is created with outer radius 1.0, inner radius 0.4, and

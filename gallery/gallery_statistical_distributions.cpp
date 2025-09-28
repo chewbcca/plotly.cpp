@@ -21,16 +21,35 @@
  * - Random number generation and statistical sampling techniques
  *
  * Statistical distributions implemented:
- * - Normal distribution: N(μ=2, σ=1) with standard bell curve shape
- * - Exponential distribution: Exp(λ=0.5) showing exponential decay
- * - Gamma distribution: Γ(k=2, θ=1.5) with shape and scale parameters
+ * - Normal distribution: \f$\mathcal{N}(\mu=2, \sigma=1)\f$ with standard bell
+ * curve shape
+ * - Exponential distribution: \f$\mathrm{Exp}(\lambda=0.5)\f$ showing
+ * exponential decay
+ * - Gamma distribution: \f$\Gamma(k=2, \theta=1.5)\f$ with shape and scale
+ * parameters
  * - Empirical normal samples: 1000 random samples for comparison
  *
- * Mathematical concepts:
- * - Probability density functions and their mathematical formulations
+ * Mathematical concepts and formulas:
+ * - **Normal Distribution PDF**:
+ *   \f[
+ *   f(x|\mu,\sigma) = \frac{1}{\sigma\sqrt{2\pi}}
+ * e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}
+ *   \f]
+ * - **Exponential Distribution PDF**:
+ *   \f[
+ *   f(x|\lambda) = \lambda e^{-\lambda x} \quad \mathrm{for } x \geq 0
+ *   \f]
+ * - **Gamma Distribution PDF**:
+ *   \f[
+ *   f(x|k,\theta) = \frac{x^{k-1}e^{-x/\theta}}{\Gamma(k)\theta^k} \quad
+ * \mathrm{for } x > 0
+ *   \f]
  * - Random sampling and empirical distribution estimation
  * - Statistical distribution parameters and their effects on shape
- * - Gamma function usage in probability calculations
+ * - **Gamma function**:
+ *   \f[
+ *   \Gamma(k) = \int_0^\infty t^{k-1}e^{-t}dt
+ *   \f]
  *
  * @image html statistical_distributions.png "Statistical Distributions
  * Comparison"
