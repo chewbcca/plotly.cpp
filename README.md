@@ -1,6 +1,6 @@
 <div align="center">
   <h1>🚀 Plotly.cpp</h1>
-  <p><strong>Interactive Data Visualization for Modern C++</strong></p>
+  <p><strong>A C++ plotting library for expressive, interactive, and streaming data visualization</strong></p>
 
 ![Build Status](https://img.shields.io/github/actions/workflow/status/yhisaki/plotly.cpp/ci.yml?branch=main)
 [![Documentation](https://img.shields.io/badge/docs-Doxygen-blue.svg)](https://yhisaki.github.io/plotly.cpp/)
