@@ -26,15 +26,6 @@ HttpServer::HttpServer(const std::filesystem::path &directory) : _server() {
   setupCommon();
 }
 
-HttpServer::HttpServer(const std::string_view htmlContent) : _server() {
-  _server.Get(
-      "/",
-      [htmlContent](const httplib::Request &, httplib::Response &res) -> void {
-        res.set_content(std::string(htmlContent), "text/html");
-      });
-  setupCommon();
-}
-
 HttpServer::~HttpServer() { stop(); }
 
 void HttpServer::start() {

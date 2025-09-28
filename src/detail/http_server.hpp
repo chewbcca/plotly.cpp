@@ -42,12 +42,6 @@ public:
   explicit HttpServer(const std::filesystem::path &directory);
 
   /**
-   * @brief Construct a server serving a single HTML content
-   * @param htmlContent The HTML content to serve
-   */
-  explicit HttpServer(std::string_view htmlContent);
-
-  /**
    * @brief Destructor
    */
   ~HttpServer();
