@@ -21,8 +21,7 @@ WebsocketServer::WebsocketServer() {
 
   _server.set_access_channels(websocketpp::log::alevel::none);
   _server.clear_access_channels(websocketpp::log::alevel::none);
-  _server.set_error_channels(websocketpp::log::elevel::warn |
-                             websocketpp::log::elevel::fatal);
+  _server.set_error_channels(websocketpp::log::elevel::none);
   _server.init_asio();
   _server.set_reuse_addr(true);
 
