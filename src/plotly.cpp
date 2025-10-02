@@ -128,17 +128,18 @@ public:
     return true;
   }
 
-  auto callPlotly(const std::string &method, const Object &params) const
+  auto callPlotly(const std::string &method, const Object &params,
+                  const std::chrono::duration<double> &timeout =
+                      RPC_CALL_TIMEOUT_SECONDS) const
       -> std::optional<plotly::Object> {
     waitConnection();
     auto [future, cancel] = jsonRpc->call(method, params);
 
-    // Wait for 1 second for the call
-    if (future.wait_for(std::chrono::duration<double>(
-            RPC_CALL_TIMEOUT_SECONDS)) == std::future_status::ready) {
+    if (future.wait_for(timeout) == std::future_status::ready) {
       return future.get();
     }
-
+    plotly::logInfo("[Figure] Call timed out: %s, timeout: %f[s]",
+                    method.c_str(), timeout.count());
     // Call timed out, cancel it and retry
     cancel();
     return std::nullopt;
@@ -326,9 +327,11 @@ public:
   /// @param opts Animation options
   auto animate(const Object &frameOrGroupNameOrFrameList,
                const Object &opts) const -> bool {
-    auto result = callPlotly("Plotly.animate", {{"frameOrGroupNameOrFrameList",
-                                                 frameOrGroupNameOrFrameList},
-                                                {"opts", opts}});
+    auto result = callPlotly(
+        "Plotly.animate",
+        {{"frameOrGroupNameOrFrameList", frameOrGroupNameOrFrameList},
+         {"opts", opts}},
+        24h);
     return result.has_value();
   }
 

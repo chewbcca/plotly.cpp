@@ -17,9 +17,7 @@ namespace plotly::detail {
 WebsocketClient::WebsocketClient() {
   _client.set_access_channels(websocketpp::log::alevel::none);
   _client.clear_access_channels(websocketpp::log::alevel::none);
-  // Only log serious errors, exclude recoverable errors like EOF
-  _client.set_error_channels(websocketpp::log::elevel::warn |
-                             websocketpp::log::elevel::fatal);
+  _client.set_error_channels(websocketpp::log::elevel::none);
   _client.init_asio();
 
   setupClientHandlers();
