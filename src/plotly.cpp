@@ -128,14 +128,15 @@ public:
     return true;
   }
 
-  auto callPlotly(const std::string &method, const Object &params) const
+  auto callPlotly(const std::string &method, const Object &params,
+                  const std::chrono::duration<double> &timeout =
+                      RPC_CALL_TIMEOUT_SECONDS) const
       -> std::optional<plotly::Object> {
     waitConnection();
     auto [future, cancel] = jsonRpc->call(method, params);
 
     // Wait for 1 second for the call
-    if (future.wait_for(std::chrono::duration<double>(
-            RPC_CALL_TIMEOUT_SECONDS)) == std::future_status::ready) {
+    if (future.wait_for(timeout) == std::future_status::ready) {
       return future.get();
     }
 
