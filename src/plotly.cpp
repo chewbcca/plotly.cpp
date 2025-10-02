@@ -135,11 +135,11 @@ public:
     waitConnection();
     auto [future, cancel] = jsonRpc->call(method, params);
 
-    // Wait for 1 second for the call
     if (future.wait_for(timeout) == std::future_status::ready) {
       return future.get();
     }
-
+    plotly::logInfo("[Figure] Call timed out: %s, timeout: %f[s]",
+                    method.c_str(), timeout.count());
     // Call timed out, cancel it and retry
     cancel();
     return std::nullopt;
@@ -327,9 +327,11 @@ public:
   /// @param opts Animation options
   auto animate(const Object &frameOrGroupNameOrFrameList,
                const Object &opts) const -> bool {
-    auto result = callPlotly("Plotly.animate", {{"frameOrGroupNameOrFrameList",
-                                                 frameOrGroupNameOrFrameList},
-                                                {"opts", opts}});
+    auto result = callPlotly(
+        "Plotly.animate",
+        {{"frameOrGroupNameOrFrameList", frameOrGroupNameOrFrameList},
+         {"opts", opts}},
+        24h);
     return result.has_value();
   }
 
